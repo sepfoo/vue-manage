@@ -4,7 +4,9 @@
       <com-aside></com-aside>
     </el-aside>
     <el-container>
-      <el-header>Header</el-header>
+      <el-header>
+        <com-header></com-header>
+      </el-header>
       <el-main>
         <!-- <transition name="fade-transform" mode="out-in">
           <router-view></router-view>
@@ -17,10 +19,12 @@
 
 <script>
 import ComAside from "@/components/ComAside";
+import ComHeader from '@/components/ComHeader'
 export default {
   name: "ViewMain",
   components: {
     ComAside,
+    ComHeader
   },
 };
 </script>

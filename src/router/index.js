@@ -6,12 +6,32 @@ Vue.use(VueRouter)
 const routes = [{
         path:'/',
         name: 'main',
-        components:() => import('@/views/Main'),
+        component:() => import('@/views/Main'),
         children:[
             {
-                path: '/home',
+                path: 'home',
                 name: 'home',
-                components: () => import('@/views/Home')
+                component: () => import('@/views/Home')
+            },
+            {
+                path: 'user',
+                name: 'user',
+                component: () => import('@/views/User')
+            },
+            {
+                path: 'mall',
+                name: 'mall',
+                component: () => import('@/views/Mall')
+            },
+            {
+                path: 'page1',
+                name: 'page1',
+                component: () => import('@/views/Other/pageone')
+            },
+            {
+                path: 'page2',
+                name: 'page2',
+                component: () => import('@/views/Other/pagetwo')
             }
         ]
     }

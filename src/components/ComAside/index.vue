@@ -29,9 +29,11 @@
         v-for="(subitem, index) in item.children"
         :key="index"
       >
-        <el-menu-item :index="index.toString()">{{
-          subitem.label
-        }}</el-menu-item>
+        <el-menu-item
+          :index="index.toString()"
+          @click="clickMenuItem(subitem)"
+          >{{ subitem.label }}</el-menu-item
+        >
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
@@ -52,11 +54,12 @@ h3 {
 </style>
 
 <script>
+import { mapState } from "vuex";
+// import { mapState } from 'vuex';
 export default {
   name: "ComAside",
   data() {
     return {
-      isCollapse: true,
       menu: [
         {
           path: "/",
@@ -110,9 +113,17 @@ export default {
     hasChildren() {
       return this.menu.filter((item) => item.children);
     },
+    // isCollapse() {
+    //   console.log(this.$store.state.tab.isCollapse)
+    //  return this.$store.state.tab.isCollapse || false
+    // }
+    // ...mapState(
+    //  ['isCollapse']
+    //   )
+    ...mapState(["isCollapse"]),
   },
-  mounted(){
-    console.log(this.$router.push)
+  mounted() {
+    // console.log(this.$router.push)
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -122,10 +133,10 @@ export default {
       console.log(key, keyPath);
     },
     clickMenuItem(item) {
-      console.log(item)
+      console.log(item);
       this.$router
         .push({
-          name: 'home'
+          name: item.name,
         })
         .catch((err) => err);
     },
